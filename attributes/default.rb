@@ -4,7 +4,8 @@ default[:cabot][:home_dir] = '/opt/cabot'
 default[:cabot][:log_dir] = '/var/log/cabot'
 default[:cabot][:virtualenv_dir] = "#{node[:cabot][:home_dir]}/venv"
 
-default[:cabot][:repo_url] = 'https://github.com/arachnys/cabot.git'
+default[:cabot][:repo_url] = 'https://github.com/0rc/cabot.git'
+default[:cabot][:repo_revision] = 'ae915949b48561cdb780ba5c3e9f2e64102aa360'
 
 default[:cabot][:environment] = 'production'
 

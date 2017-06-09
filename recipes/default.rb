@@ -67,6 +67,9 @@ end
         'twilio' => '3.4.1',
         'wsgiref' => '0.1.2',
         'python-dateutil' => '2.1',
+        'cabot-alert-email' => '1.3.1',
+        'cabot-alert-hipchat' => '1.6.1',
+        'cabot-alert-twilio' => '1.1.4',
 }.each do |mod, version|
   python_pip mod do
     action :install
@@ -100,6 +103,7 @@ end
 git node[:cabot][:home_dir] do
   action :sync
   repository node[:cabot][:repo_url]
+  revision node[:cabot][:repo_revision]
   user node[:cabot][:user]
   group node[:cabot][:group]
 end

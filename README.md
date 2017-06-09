@@ -245,6 +245,19 @@ Include `cabot` in your node's `run_list`:
 
 Include `cabot::proxy` in your node's `run_list` to have Nginx as a reverse proxy to Cabot on port 80.
 
+### cabot checks, services resources
+
+Include attributes like this to either your wrapper cookbook, environment or node:
+```
+default[:cabot][:checks][:disk] = [
+  { "name" => "Disk free check", "metric" => "collectd.*.df-{data,root,mnt}.percent_bytes-free", "check_type" => "<", "value" => "20", "expected_num_hosts" => 0, "expected_num_metrics" => 0 },
+  { "name" => "Disk free check", "metric" => "collectd.*.df-{data,root,mnt}.percent_bytes-used", "check_type" => ">", "value" => "80", "expected_num_hosts" => 0, "expected_num_metrics" => 0 },
+]
+default[:cabot][:services][:disk] = [
+  { "name" => "Disk space", "checks" => ['disk'] },
+]
+```
+
 ## Contributing
 
 1. Fork the repository on Github
